@@ -206,7 +206,12 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
     cellFrame = drawAdornments(cellFrame, controlView);
-    cellFrame.origin.y -= 1;
+
+    if ([(KSPasswordField *)controlView showStrength])
+    {
+        cellFrame.origin.y -= 1;
+    }
+
     [super drawInteriorWithFrame:cellFrame inView:controlView];
 }
 
