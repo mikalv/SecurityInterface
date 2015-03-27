@@ -49,6 +49,7 @@ extern NSString *KSPasswordFieldDidBecomeFirstResponderNotification;
 
 @property (nonatomic) IBInspectable BOOL showStrength;
 @property (nonatomic) IBInspectable BOOL showMatchIndicator;
+@property (nonatomic) IBInspectable BOOL useSmartPaste;
 @property (nonatomic) KSPasswordFieldMeter passwordMeter;
 
 /**

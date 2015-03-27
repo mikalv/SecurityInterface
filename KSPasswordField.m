@@ -349,6 +349,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
     if (self = [super initWithFrame:frameRect])
     {
         _becomesFirstResponderWhenToggled = YES;
+        _useSmartPaste = YES;
 
 		// Don't show text by default. This needs to be called to replace the standard cell with our custom one.
 		[self setShowsText:NO];
@@ -361,6 +362,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
     if (self = [super initWithCoder:aDecoder])
     {
         _becomesFirstResponderWhenToggled = YES;
+        _useSmartPaste = YES;
 
 		// Don't show text by default. This needs to be called to replace the standard cell with our custom one.
 		[self setShowsText:NO];
@@ -538,7 +540,8 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 {
     BOOL shouldChange = YES;
     BOOL changingEntireContents = (affectedCharRange.location == 0) && (affectedCharRange.length == [textView.string length]);
-    if (changingEntireContents)
+
+    if (changingEntireContents && self.useSmartPaste)
     {
         // we check for text containing non-whitespace characters but starting with or ending with whitespace
         // if we find it, we assume that it's being pasted in, and we trim the whitespace off first
