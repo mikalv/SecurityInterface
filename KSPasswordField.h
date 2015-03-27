@@ -47,14 +47,14 @@ extern NSString *KSPasswordFieldDidBecomeFirstResponderNotification;
 
 @interface KSPasswordField : NSSecureTextField
 
-@property (nonatomic) BOOL showStrength;
-@property (nonatomic) BOOL showMatchIndicator;
+@property (nonatomic) IBInspectable BOOL showStrength;
+@property (nonatomic) IBInspectable BOOL showMatchIndicator;
 @property (nonatomic) KSPasswordFieldMeter passwordMeter;
 
 /**
  Whether to display the password as plain text or not.
  */
-@property (nonatomic) BOOL showsText;
+@property (nonatomic) IBInspectable BOOL showsText;
 
 @property (nonatomic, assign) float strength;
 @property (nonatomic, assign) NSUInteger length;
