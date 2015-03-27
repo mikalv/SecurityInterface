@@ -25,7 +25,6 @@
 //
 
 #import "KSPasswordField.h"
-#import "NSData+Karelia.h"
 
 #define YOFFSET 2
 #define STRENGTH_INSET 4
