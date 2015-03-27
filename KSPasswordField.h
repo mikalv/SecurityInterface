@@ -26,7 +26,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-typedef NS_ENUM(NSInteger, MATCHING) { HIDE_MATCH = 0, DOESNT_MATCH, PARTIAL_MATCH, FULL_MATCH };
+typedef NS_ENUM(NSInteger, KSPasswordFieldMatching) {
+    KSPasswordFieldMatchingHideMatch = 0,
+    KSPasswordFieldMatchingDoesntMatch,
+    KSPasswordFieldMatchingPartialMatch,
+    KSPasswordFieldMatchingFullMatch
+};
 
 typedef NS_ENUM(NSInteger, PasswordMeter) {
     MeterEmpty = 0,     // Disallow, very short; don't show strength yet
@@ -47,7 +52,7 @@ typedef NS_ENUM(NSInteger, PasswordMeter) {
     BOOL    _showMatchIndicator;
     float   _strength;
     NSUInteger _length;
-    MATCHING _matching;
+    KSPasswordFieldMatching _matching;
     PasswordMeter _passwordMeter;
     NSString *_descriptionOfStrength;
     
@@ -65,7 +70,7 @@ typedef NS_ENUM(NSInteger, PasswordMeter) {
 
 @property (nonatomic, assign) float strength;
 @property (nonatomic, assign) NSUInteger length;
-@property (nonatomic, assign) MATCHING matching;
+@property (nonatomic, assign) KSPasswordFieldMatching matching;
 @property (nonatomic, copy) NSString *descriptionOfStrength;
 
 /**
