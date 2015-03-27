@@ -305,6 +305,24 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 @end
 
 
+
+@interface KSPasswordField () <NSTextViewDelegate>
+{
+    @private
+    BOOL    _showsText;
+    BOOL    _becomesFirstResponderWhenToggled;
+    BOOL    _showStrength;
+    BOOL    _showMatchIndicator;
+    float   _strength;
+    NSUInteger _length;
+    KSPasswordFieldMatching _matching;
+    PasswordMeter _passwordMeter;
+    NSString *_descriptionOfStrength;
+}
+
+@end
+
+
 @implementation KSPasswordField
 
 
