@@ -47,14 +47,14 @@ extern NSString *KSPasswordFieldDidBecomeFirstResponderNotification;
 
 @interface KSPasswordField : NSSecureTextField
 
-@property(nonatomic) BOOL showStrength;
-@property(nonatomic) BOOL showMatchIndicator;
-@property(nonatomic) KSPasswordFieldMeter passwordMeter;
+@property (nonatomic) BOOL showStrength;
+@property (nonatomic) BOOL showMatchIndicator;
+@property (nonatomic) KSPasswordFieldMeter passwordMeter;
 
 /**
  Whether to display the password as plain text or not.
  */
-@property(nonatomic) BOOL showsText;
+@property (nonatomic) BOOL showsText;
 
 @property (nonatomic, assign) float strength;
 @property (nonatomic, assign) NSUInteger length;
@@ -69,7 +69,7 @@ extern NSString *KSPasswordFieldDidBecomeFirstResponderNotification;
  into it. Set to `NO` if you want to perform your own management of the first
  responder instead.
  */
-@property(nonatomic) BOOL becomesFirstResponderWhenToggled;
+@property (nonatomic) BOOL becomesFirstResponderWhenToggled;
 
 /**
  Sets `.showsText` to `YES`.
@@ -100,12 +100,12 @@ extern NSString *KSPasswordFieldDidBecomeFirstResponderNotification;
  
  @param string The password string to be cleaned up.
  */
-- (NSString*)cleanedPasswordForString:(NSString*)string;
+- (NSString *)cleanedPasswordForString:(NSString *)string;
 
 
-- (void) setStrength:(float)strength length:(NSUInteger)length;
+- (void)setStrength:(float)strength length:(NSUInteger)length;
 
-- (BOOL) strongEnough;
+- (BOOL)strongEnough;
 
 @end
 
