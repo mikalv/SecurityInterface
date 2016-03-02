@@ -43,21 +43,7 @@ typedef NS_ENUM(NSInteger, PasswordMeter) {
     MeterStrong
 };
 
-@interface KSPasswordField : NSSecureTextField <NSTextViewDelegate>
-{
-  @private
-    BOOL    _showsText;
-    BOOL    _becomesFirstResponderWhenToggled;
-    BOOL    _showStrength;
-    BOOL    _showMatchIndicator;
-    float   _strength;
-    NSUInteger _length;
-    KSPasswordFieldMatching _matching;
-    PasswordMeter _passwordMeter;
-    NSString *_descriptionOfStrength;
-    
-}
-
+@interface KSPasswordField : NSSecureTextField
 
 @property(nonatomic) BOOL showStrength;
 @property(nonatomic) BOOL showMatchIndicator;
