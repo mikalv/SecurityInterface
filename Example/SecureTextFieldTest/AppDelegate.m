@@ -18,7 +18,7 @@
 	if (!self.showPassword) // we don't want first responder of second field
 	{
 		[_oPassword2Field setStringValue:@""];       // clear out, so they don't have to match
-		[_oPassword2Field setMatching:HIDE_MATCH];   // don't show any indication of matching, either
+		[_oPassword2Field setMatching:KSPasswordFieldMatchingHideMatch];   // don't show any indication of matching, either
 		[self.window makeFirstResponder:_oPassword1Field];
 	}
 
@@ -45,7 +45,7 @@
         NSString *string = [fieldEditor string];
         self.password1 = string;
         [_oPassword2Field setStringValue:@""];       // clear out second password whenever password 1 changes
-        [_oPassword2Field setMatching:HIDE_MATCH];   // don't show any indication of matching, either
+        [_oPassword2Field setMatching:KSPasswordFieldMatchingHideMatch];   // don't show any indication of matching, either
     }
     else if (obj == _oPassword2Field)
     {
@@ -58,19 +58,19 @@
 
         if ([@"" isEqualToString:string])
         {
-            [obj setMatching:HIDE_MATCH];
+            [obj setMatching:KSPasswordFieldMatchingHideMatch];
         }
         else if ([password1 isEqualToString:string] && [string length] >= 8)
         {
-            [obj setMatching:FULL_MATCH];
+            [obj setMatching:KSPasswordFieldMatchingFullMatch];
         }
         else if ([password1 hasPrefix:string] && [string length] >= 8)
         {
-            [obj setMatching:PARTIAL_MATCH];
+            [obj setMatching:KSPasswordFieldMatchingPartialMatch];
         }
         else
         {
-            [obj setMatching:DOESNT_MATCH];
+            [obj setMatching:KSPasswordFieldMatchingDoesntMatch];
         }
         [obj setNeedsDisplay];
     }

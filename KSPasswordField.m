@@ -112,9 +112,9 @@ void drawDescriptionOfStrength(NSRect cellFrame, float strength, NSString *descr
     [descriptionOfStrength drawInRect:descRect withAttributes:attr];
 }
 
-void drawMatch(NSRect cellFrame, MATCHING matching)
+void drawMatch(NSRect cellFrame, KSPasswordFieldMatching matching)
 {
-    if (matching == HIDE_MATCH) return;
+    if (matching == KSPasswordFieldMatchingHideMatch) return;
 
     NSColor *fillColor = nil;
 
@@ -123,8 +123,8 @@ void drawMatch(NSRect cellFrame, MATCHING matching)
     NSRect drawFrame = NSMakeRect(NSMaxX(cellFrame)-w-6, y, w, w);
 
     switch (matching) {
-        case PARTIAL_MATCH: fillColor = [NSColor yellowColor]; break;
-        case DOESNT_MATCH: fillColor = [NSColor redColor]; break;
+        case KSPasswordFieldMatchingPartialMatch: fillColor = [NSColor yellowColor]; break;
+        case KSPasswordFieldMatchingDoesntMatch: fillColor = [NSColor redColor]; break;
         default: break;
     }
 
@@ -139,7 +139,7 @@ void drawMatch(NSRect cellFrame, MATCHING matching)
         [[fillColor shadowWithLevel:0.25] set];
         [strokePath stroke];
     }
-    if (matching == FULL_MATCH)
+    if (matching == KSPasswordFieldMatchingFullMatch)
     {
         NSImage *checkmark = [NSImage imageNamed:@"checkmark"];             // This image resource should be in the app
         NSRect checkmarkFrame = NSMakeRect(NSMaxX(cellFrame)-16-4,3,16,16);
@@ -186,11 +186,11 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 
     }    
     // For the main field, if there is a string not long enough, also show the not-matching indicator to indicate a problem to fix
-    MATCHING matchingToShow = passwordField.matching;
+    KSPasswordFieldMatching matchingToShow = passwordField.matching;
     if (!passwordField.showMatchIndicator) {
-        matchingToShow = HIDE_MATCH;
+        matchingToShow = KSPasswordFieldMatchingHideMatch;
     } else if (strlength > 0 && strlength < 8) {
-        matchingToShow = DOESNT_MATCH;
+        matchingToShow = KSPasswordFieldMatchingDoesntMatch;
     }
     drawMatch(result, matchingToShow);
     
