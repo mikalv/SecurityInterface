@@ -33,14 +33,14 @@ typedef NS_ENUM(NSInteger, KSPasswordFieldMatching) {
     KSPasswordFieldMatchingFullMatch
 };
 
-typedef NS_ENUM(NSInteger, PasswordMeter) {
-    MeterEmpty = 0,     // Disallow, very short; don't show strength yet
-    MeterCommon,        // Disallow, too common
-    MeterShort,         // Disallow, too short
-    MeterInsecure,      // Allow, but warn it's insecure (a.k.a. very weak)
-    MeterWeak,          // Allow, but weak
-    MeterFair,
-    MeterStrong
+typedef NS_ENUM(NSInteger, KSPasswordFieldMeter) {
+    KSPasswordFieldMeterEmpty = 0,     // Disallow, very short; don't show strength yet
+    KSPasswordFieldMeterCommon,        // Disallow, too common
+    KSPasswordFieldMeterShort,         // Disallow, too short
+    KSPasswordFieldMeterInsecure,      // Allow, but warn it's insecure (a.k.a. very weak)
+    KSPasswordFieldMeterWeak,          // Allow, but weak
+    KSPasswordFieldMeterFair,
+    KSPasswordFieldMeterStrong
 };
 
 extern NSString *KSPasswordFieldDidBecomeFirstResponderNotification;
@@ -49,7 +49,7 @@ extern NSString *KSPasswordFieldDidBecomeFirstResponderNotification;
 
 @property(nonatomic) BOOL showStrength;
 @property(nonatomic) BOOL showMatchIndicator;
-@property(nonatomic) PasswordMeter passwordMeter;
+@property(nonatomic) KSPasswordFieldMeter passwordMeter;
 
 /**
  Whether to display the password as plain text or not.

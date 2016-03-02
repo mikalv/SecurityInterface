@@ -317,7 +317,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
     float   _strength;
     NSUInteger _length;
     KSPasswordFieldMatching _matching;
-    PasswordMeter _passwordMeter;
+    KSPasswordFieldMeter _passwordMeter;
     NSString *_descriptionOfStrength;
 }
 
@@ -636,7 +636,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 
 - (BOOL) strongEnough;
 {
-    return self.passwordMeter >= MeterInsecure;
+    return self.passwordMeter >= KSPasswordFieldMeterInsecure;
 }
 
 - (void)textDidChange:(NSNotification *)aNotification
@@ -648,23 +648,23 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
         
         BOOL visible = ![@"" isEqualToString:string];
         
-        PasswordMeter passwordMeter = MeterEmpty;
+        KSPasswordFieldMeter passwordMeter = KSPasswordFieldMeterEmpty;
         if (visible)
         {
             if ([string length] < 8)
             {
-                passwordMeter = MeterShort;
+                passwordMeter = KSPasswordFieldMeterShort;
             }
             else if ([sPasswordBlacklist containsObject:string])
             {
-                passwordMeter = MeterCommon;		// Don't let super-common password be chosen
+                passwordMeter = KSPasswordFieldMeterCommon;		// Don't let super-common password be chosen
             }
             else
             {
-                      if (strength < 0.25)  { passwordMeter = MeterInsecure; }
-                 else if (strength < 0.4)   { passwordMeter = MeterWeak; }
-                 else if (strength < 0.70)  { passwordMeter = MeterFair; }
-                 else                       { passwordMeter = MeterStrong; }
+                      if (strength < 0.25)  { passwordMeter = KSPasswordFieldMeterInsecure; }
+                 else if (strength < 0.4)   { passwordMeter = KSPasswordFieldMeterWeak; }
+                 else if (strength < 0.70)  { passwordMeter = KSPasswordFieldMeterFair; }
+                 else                       { passwordMeter = KSPasswordFieldMeterStrong; }
             }
         }
         self.passwordMeter = passwordMeter;
