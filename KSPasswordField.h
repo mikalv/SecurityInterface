@@ -56,6 +56,7 @@ typedef NS_ENUM(NSInteger, PasswordMeter) {
 
 @property(nonatomic) BOOL showStrength;
 @property(nonatomic) BOOL showMatchIndicator;
+@property (nonatomic) IBInspectable BOOL cleanUpWhitespace;
 @property(nonatomic) PasswordMeter passwordMeter;
 
 /**
