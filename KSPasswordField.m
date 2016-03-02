@@ -35,7 +35,7 @@ static NSArray *sStrengthDescriptions = nil;
 static NSSet *sPasswordBlacklist = nil;         // Worst ones
 static NSUInteger sMaxStrengthDescriptionWidth = 0;
 
-NSString *MyControlDidBecomeFirstResponderNotification = @"MyControlDidBecomeFirstResponderNotification";
+NSString *KSPasswordFieldDidBecomeFirstResponderNotification = @"KSPasswordFieldDidBecomeFirstResponderNotification";
 
 void drawMeter(NSRect bounds, float strength, NSUInteger width)
 {
@@ -411,7 +411,8 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 {
     // If the control's delegate responds to controlDidBecomeFirstResponder, invoke it. Also post a notification.
     BOOL didBecomeFirstResponder = [super becomeFirstResponder];
-    NSNotification *notification = [NSNotification notificationWithName:MyControlDidBecomeFirstResponderNotification object:self];
+    NSNotification *notification =
+        [NSNotification notificationWithName:KSPasswordFieldDidBecomeFirstResponderNotification object:self];
     if ( [self delegate] && [[self delegate] respondsToSelector:@selector(controlDidBecomeFirstResponder:)] ) {
         [((NSObject *)[self delegate]) controlDidBecomeFirstResponder:notification];
     }

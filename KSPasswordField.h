@@ -43,6 +43,8 @@ typedef NS_ENUM(NSInteger, PasswordMeter) {
     MeterStrong
 };
 
+extern NSString *KSPasswordFieldDidBecomeFirstResponderNotification;
+
 @interface KSPasswordField : NSSecureTextField
 
 @property(nonatomic) BOOL showStrength;
