@@ -96,7 +96,7 @@ void drawDescriptionOfStrength(NSRect cellFrame, float strength, NSString *descr
     NSColor *textColor = strength < 0.4 ? red : (strength > 0.70 ? green : yellow);
     [textColor set];
     
-    NSMutableParagraphStyle* rightStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
+    NSMutableParagraphStyle *rightStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
 	[rightStyle setAlignment:NSRightTextAlignment];
     NSDictionary *attr = [NSDictionary dictionaryWithObjectsAndKeys:
             [NSFont systemFontOfSize:[NSFont smallSystemFontSize]], NSFontAttributeName,
@@ -198,7 +198,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 }
 
 @interface NSObject(controlDidBecomeFirstResponder)
-- (void) controlDidBecomeFirstResponder:(NSNotification *)aNotification;
+- (void)controlDidBecomeFirstResponder:(NSNotification *)aNotification;
 @end
 
 
@@ -327,7 +327,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 @implementation KSPasswordField
 
 
--(BOOL)textView:(NSTextView *)aTextView doCommandBySelector: (SEL)aSelector
+- (BOOL)textView:(NSTextView *)aTextView doCommandBySelector: (SEL)aSelector
 {
     if (aSelector == @selector(moveDown:))
     {
@@ -425,7 +425,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 
 
 
-- (void) setStrength:(float)strength length:(NSUInteger)length;
+- (void)setStrength:(float)strength length:(NSUInteger)length;
 {
     self.strength = strength;
     self.length = length;
@@ -436,6 +436,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 #pragma mark Showing Password
 
 @synthesize showsText = _showsText;
+
 - (void)setShowsText:(BOOL)showsText;
 {
     _showsText = showsText;
@@ -507,9 +508,9 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 //! Returns the same string if nothing needs changing.
 //! Otherwise, returns the password with whitespace trimmed off
 
-- (NSString*)cleanedPasswordForString:(NSString*)string
+- (NSString *)cleanedPasswordForString:(NSString *)string
 {
-    NSString* result;
+    NSString *result;
     
     NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     NSCharacterSet *nonWhitespaceChars = [whitespace invertedSet];
@@ -537,7 +538,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
     {
         // we check for text containing non-whitespace characters but starting with or ending with whitespace
         // if we find it, we assume that it's being pasted in, and we trim the whitespace off first
-        NSString* cleaned = [self cleanedPasswordForString:replacementString];
+        NSString *cleaned = [self cleanedPasswordForString:replacementString];
         BOOL wasTrimmed = ![cleaned isEqualToString:replacementString];
         if (wasTrimmed)
         {
@@ -554,7 +555,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
 #pragma mark Password strength
 
 // Returns zero (awful) to one (awesome).  We could reject low values, warn if medium values
-- (float) strengthOfPassword:(NSString *)proposedPassword;
+- (float)strengthOfPassword:(NSString *)proposedPassword;
 {
     NSUInteger length = [proposedPassword length];  // the longer the better
     // Not going to use enumerateSubstringsInRange with NSStringEnumerationByComposedCharacterSequences
@@ -634,7 +635,7 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
     return strength;
 }
 
-- (BOOL) strongEnough;
+- (BOOL)strongEnough;
 {
     return self.passwordMeter >= KSPasswordFieldMeterInsecure;
 }
@@ -683,6 +684,5 @@ NSRect drawAdornments(NSRect cellFrame, NSView *controlView)
         ];
     [[NSNotificationCenter defaultCenter] postNotification:newNotif];
 }
-
 
 @end
